@@ -1,13 +1,9 @@
-
-import './App.css'
-
+import Body from './components/Body'
 function App() {
   
 
   return (
-    <>
-      <p className="bg-black text-white">welcom to react</p>
-    </>
+  <Body/>
   )
 }
 
