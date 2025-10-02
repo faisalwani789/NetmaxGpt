@@ -1,15 +1,26 @@
 import { createBrowserRouter } from "react-router-dom"
-import Body from "../components/Body"
 import Browse from "../components/Browse"
-import Login from "../components/Login"
+import App from "../App"
+import Body from "../components/Body"
 
 export const appRouter = createBrowserRouter([
     {
         path:"/",
-        element:<Login/>
+        element:<App/>,
+        children:[
+            {
+                index:true, 
+                element:<Body/>,
+            
+            },
+            {
+                path:"/browse",
+                 element:<Browse/>
+            }
+        ]
     },
-    {
-        path:"/browse",
-        element:<Browse/>
-    }
+    // {
+    //     path:"/browse",
+    //     element:<Browse/>
+    // }
 ])

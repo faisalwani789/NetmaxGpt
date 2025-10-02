@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router-dom"
 const Body=()=>{
     return(
         <div>
-           <RouterProvider router={appRouter} />
+          <Login/>
         </div>
     )
 }
