@@ -7,6 +7,11 @@ const userSlice=createSlice({
         addUser:(state,action)=>{
             return action.payload
         },
+        updateUser:(state,action)=>{
+            if(state){
+                state={...state,...action.payload}
+            }
+        },
         removeUser:()=>{
             return null
         }

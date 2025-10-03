@@ -1,13 +1,17 @@
 import { useState } from "react"
 import Header from "./Header"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import validation from "../utils/validate"
 import { createUserWithEmailAndPassword,  signInWithEmailAndPassword ,updateProfile} from "firebase/auth"
 import { auth } from "../utils/firebase"
+import { addUser } from "../utils/userSlice"
+import { useDispatch } from "react-redux"
 
 const Login = () => {
-    
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
     const [email, setEmail] = useState("")
     const[name,setName]=useState("")
     const [emailValidationError, setEmailValidationError] = useState("")
@@ -47,10 +51,12 @@ const Login = () => {
                 .then((userCredential) => {
                     console.log(userCredential)
                     const user = userCredential.user
-                    updateProfile(user,{displayName:name,photoURL:"https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fsearch%3Fq%3D%2BFaisal%2BYousuf&psig=AOvVaw3FQN6p0JQzZdClugZnEUjd&ust=1759508717914000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOjMo_P2hZADFQAAAAAdAAAAABAE"})
-                    .then(()=>{
-                        console.log("profile updated")
-                        // navigate
+                    updateProfile(user,{displayName:name,photoURL:"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png"})
+                    .then(async()=>{
+                        await user.reload(); //fetching the data added in the updateProfile
+                        const{uid,email,displayName,photoURL}=auth.currentUser
+                        dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
+                        navigate("/browse")
                     }).catch((err)=>console.log(err.message))
                 })
                 .catch((error) => {
