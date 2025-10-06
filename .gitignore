@@ -16,7 +16,7 @@ eslint.config.js
 dist
 dist-ssr
 *.local
-
+src/utils/constants.jsx
 
 /src/utils/firebase.js
 

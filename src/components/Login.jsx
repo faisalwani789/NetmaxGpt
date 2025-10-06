@@ -2,7 +2,8 @@ import { useState } from "react"
 import Header from "./Header"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-
+import {CUSTOMUSERICON} from "../utils/constants"
+import { USERICON } from "../utils/constants"
 import validation from "../utils/validate"
 import { createUserWithEmailAndPassword,  signInWithEmailAndPassword ,updateProfile} from "firebase/auth"
 import { auth } from "../utils/firebase"
@@ -51,16 +52,16 @@ const Login = () => {
                 .then((userCredential) => {
                     console.log(userCredential)
                     const user = userCredential.user
-                    updateProfile(user,{displayName:name,photoURL:"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png"})
+                    updateProfile(user,{displayName:name,photoURL:USERICON})
                     .then(async()=>{
                         await user.reload(); //fetching the data added in the updateProfile
                         const{uid,email,displayName,photoURL}=auth.currentUser
                         dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
-                        navigate("/browse")
+                        // navigate("/browse")
                     }).catch((err)=>console.log(err.message))
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
+                    // const errorCode = error.code;
                     const errorMessage = error.message;
                     setErrorMessage(errorMessage)
                   

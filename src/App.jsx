@@ -28,7 +28,7 @@ function App() {
                 console.log("working")
                 dispatch(removeUser())
                 console.log("signout sucess form onAuthStateChange")
-                navigate("/",{replace:true})
+                navigate("/")
             }
         })
         return ()=>unsubscribe() //removes the listener when component is unmounted
