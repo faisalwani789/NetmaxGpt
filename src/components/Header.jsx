@@ -17,7 +17,7 @@ const Header = () => {
   const user = useSelector((store) => store.user)
   const handleSignOut = () => {
     signOut(auth).then(() => {
-      console.log("user signed out")
+      // console.log("user signed out")
       //remove user from store will be done automatically using onAuthStateChange()
       // navigate("/")  i think navigation will also be done automatically by onAuthStateChange
     })
@@ -26,7 +26,7 @@ const Header = () => {
       });
   }
   return (
-    <div className=" flex justify-between items-center fixed w-full z-10  bg-transparent text-white ">
+    <div className=" py-4 flex justify-between items-center fixed top-0 w-full z-15  bg-transparent text-white ">
       <div className="flex  gap-4 items-center  w-7/12 ">
         <div className="ml-12">
            <img src={LOGO} className="w-30" alt="logo" />

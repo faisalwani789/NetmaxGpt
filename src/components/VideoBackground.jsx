@@ -6,10 +6,11 @@ useGetMovieVideos(movieId)
 const currentVideoTrailer=useSelector(store=>store.movies?.trailerVideo)
 const youtube_key=currentVideoTrailer?.key
   return (
-    <div className='w-full h-[100vh] overflow-hidden brightness-60'>
-      <iframe className='w-full h-[100vh] border-2 scale-130 origin-center ' src={`https://www.youtube.com/embed/${youtube_key}?rel=0&autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    <div className=' relative w-[100%] h-0 pb-[56.25%] overflow-hidden  bg-gradient-to-t from-black shadow-xl'>
+      <iframe className='absolute w-full h-[100%] scale-135 object-cover ' src={`https://www.youtube.com/embed/${youtube_key}?rel=0&autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&playlist=${youtube_key}&loop=1`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       ></iframe>
-    </div>
+      <div className='absolute inset-0 bg-gradient-to-t from-black/100 to-transparent'></div>
+    </div >
   )
 }
 
