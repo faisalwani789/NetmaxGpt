@@ -8,13 +8,26 @@ import {BsQuestionCircle} from "react-icons/bs"
 import { RiUser3Line } from 'react-icons/ri';
 import { useSelector } from "react-redux"
 import { LOGO, USERICON,KIDSICON } from "../utils/constants"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import GptSearch from "./GptSearch"
+import GptSearchHigher from "./GptSearchHigher"
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies"
 
 const Header = () => {
   // const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  useNowPlayingMovies()
+  const[scrolled,setScrolled]=useState(false)
   const[showMenu,setShowMenu]=useState(false)
+  
   const user = useSelector((store) => store.user)
+  const GptBar=GptSearchHigher(GptSearch)
+   useEffect(()=>{
+        const handleScroll=()=>{
+          setScrolled(window.scrollY>50)
+        }
+        window.addEventListener('scroll',handleScroll);
+        return ()=>window.removeEventListener('scroll',handleScroll)
+      },[])
   const handleSignOut = () => {
     signOut(auth).then(() => {
       // console.log("user signed out")
@@ -24,9 +37,11 @@ const Header = () => {
       .catch((error) => {
         console.error("Sign-out error:", error);
       });
+     
   }
+  
   return (
-    <div className=" py-4 flex justify-between items-center fixed top-0 w-full z-15  bg-transparent text-white ">
+    <div className={`py-2 flex justify-between items-center fixed top-0 w-full z-15 text-white ${scrolled?"bg-black":"bg-transparent"} `}   >
       <div className="flex  gap-4 items-center  w-7/12 ">
         <div className="ml-12">
            <img src={LOGO} className="w-30" alt="logo" />
@@ -45,17 +60,18 @@ const Header = () => {
        
       </div>
 
-      {user && <div className="flex justify-between items-center w-60 mr-20">
+      {user && <div className="flex justify-end gap-8 items-center w-130 max-w-150  mr-12">
         
         
-        <FiSearch className="text-2xl"/>
+        
+        <GptBar />
         <Link to={"/"}>
         Children
         </Link>
         <FiBell className="text-2xl"/>
         <div className="cursor-pointer " onMouseEnter={()=>setShowMenu(!showMenu)}>
           <img className="inline-block w-8 rounded-md " src={user.photoURL || USERICON }  alt="userLogo" />
-          <span className={`text-xs text-black px-2`} >▼</span> 
+          <span className={`text-xs text-white px-2`} >▼</span> 
 
         </div>
         

@@ -8,11 +8,11 @@ import { appRouter } from './routes/router.jsx'
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <ErrorBoundary>
       <Provider store={appStore}>
        <RouterProvider router={appRouter}/>
       </Provider>
     </ErrorBoundary>
-  </StrictMode>,
+  // </StrictMode>,
 )
