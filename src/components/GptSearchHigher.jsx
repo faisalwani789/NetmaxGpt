@@ -1,4 +1,4 @@
-
+import { FiX } from 'react-icons/fi'
 import { useSelector } from 'react-redux'
 const GptSearchHigher = (GptSearch) => {
 const showGptSearch=useSelector(store=>store.config?.showGptSearchBar)
@@ -6,7 +6,8 @@ const showGptSearch=useSelector(store=>store.config?.showGptSearchBar)
          return showGptSearch? (
     <div className='flex items-center '>
         <GptSearch />
-        <input className="border-2 -ml-8 px-10 py-1 " placeholder="welcome to Gpt Search"/>
+        <input className="border-2  w-[0px]  animate-extend  " placeholder="welcome to Gpt Search"/>
+        <FiX className='relative text-white text-2xl -ml-7 cursor-pointer' onClick={()=>console.log("hello")}/ >
     </div>
   ):(
     <GptSearch/>

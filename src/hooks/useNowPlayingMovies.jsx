@@ -8,7 +8,7 @@ const useNowPlayingMovies=()=>{
         fetch('https://api.themoviedb.org/3/movie/now_playing?page=1', options)
             .then(res => res.json())
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 dispatch(addNowPlayingMovies(res.results))
             })
             .catch(err => console.error(err));

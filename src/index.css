@@ -1,4 +1,20 @@
+
 @import "tailwindcss";
+@theme{
+  @keyframes extend{
+    0%{
+      width: 0px;
+      
+    }
+    100%{
+      width: 240px;
+      padding:0.4em 2em;
+      margin-left:-2rem;
+    }
+  }
+  --animate-extend:extend 0.5s ease-in-out forwards;
+}
+/* customisation possible via tailwind.cofig is now available here in global css in tailwind 4.0 */
 @layer{
 }
 .hide-scrollbar {

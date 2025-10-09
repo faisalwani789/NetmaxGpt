@@ -34,7 +34,7 @@ const Login = () => {
 
     const buttonHandler = () => {
         const result = validation(email, password)
-        console.log(result)
+        // console.log(result)
         if (result?.emailError) {
             setEmailValidationError(result.message)
 
