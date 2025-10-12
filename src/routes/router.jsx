@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 import Browse from "../components/Browse"
 import App from "../App"
 import Body from "../components/Body"
-import Search from "../components/Search"
+import GptSearchResults from "../components/GptSearchResults"
 
 
 export const appRouter = createBrowserRouter([
@@ -21,7 +21,7 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path:"/search",
-                element:<Search/>
+                element:<GptSearchResults/>
             }
         ]
     },

@@ -6,12 +6,13 @@ import { showGptSearchBar } from '../utils/configurationSlice'
 const GptSearch = () => {
   const dispatch=useDispatch()
    const handleSearchToggle=()=>{
+    
       dispatch(showGptSearchBar())
    }
   
   return (
     <div>
-        <FiSearch className="text-2xl cursor-pointer relative" onClick={handleSearchToggle}/>
+        <FiSearch className="text-2xl cursor-pointer " onClick={handleSearchToggle}/>
     </div>
   )
 }

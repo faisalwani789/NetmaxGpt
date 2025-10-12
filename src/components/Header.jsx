@@ -6,21 +6,26 @@ import { FiEdit,FiUser } from 'react-icons/fi'
 import {FaQuestionCircle} from "react-icons/fa"
 import {BsQuestionCircle} from "react-icons/bs"
 import { RiUser3Line } from 'react-icons/ri';
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { LOGO, USERICON,KIDSICON } from "../utils/constants"
 import { useEffect, useState } from "react"
 import GptSearch from "./GptSearch"
 import GptSearchHigher from "./GptSearchHigher"
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies"
-
-const Header = () => {
+import lang from "../utils/languageConstants"
+import { SUPPORTED_LANGUAGES } from "../utils/constants"
+import { changeLanguage } from "../utils/configurationSlice"
+const Header = ({defaultBackground="bg-transparent"}) => {
   // const navigate = useNavigate()
   useNowPlayingMovies()
+  const dispatch=useDispatch()
+  const user = useSelector((store) => store.user)
+  const langKey = useSelector((store) => store.config?.langKey)
   const[scrolled,setScrolled]=useState(false)
   const[showMenu,setShowMenu]=useState(false)
   
-  const user = useSelector((store) => store.user)
-  const GptBar=GptSearchHigher(GptSearch)
+  // const GptBar=GptSearchHigher(GptSearch)
+  
    useEffect(()=>{
         const handleScroll=()=>{
           setScrolled(window.scrollY>50)
@@ -41,32 +46,34 @@ const Header = () => {
   }
   
   return (
-    <div className={`py-2 flex justify-between items-center fixed top-0 w-full z-15 text-white ${scrolled?"bg-black":"bg-transparent"} `}   >
+    
+    <div className={`py-2 flex justify-between items-center fixed top-0 w-full z-15 text-white ${scrolled?"bg-black":defaultBackground} `}   >
       <div className="flex  gap-4 items-center  w-7/12 ">
         <div className="ml-12">
            <img src={LOGO} className="w-30" alt="logo" />
         </div>
        {user && <ul className=" hidden lg:flex  gap-4 font-medium ">
-          <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"/"}>{lang[langKey].home}</Link></li>
           <li><Link to={"/"}>Shows</Link></li>
           <li><Link to={"/"}>Movies</Link></li>
           <li><Link to={"/"}></Link>Games</li>
-          <li><Link to={"/"}></Link>New & Popular</li>
-          <li><Link to={"/"}></Link>My List</li>
+          
           <li><Link to={"/"}></Link>Browse By Languages</li>
 
 
         </ul>}
        
       </div>
-
-      {user && <div className="flex justify-end gap-8 items-center w-130 max-w-150  mr-12">
+        
+       
+       
+      {user && <div className="flex justify-end gap-8 items-center w-170 max-w-200  mr-12">
         
         
         
-        <GptBar />
+        <GptSearchHigher />
         <Link to={"/"}>
-        Children
+        {lang[langKey].Children}
         </Link>
         <FiBell className="text-2xl"/>
         <div className="cursor-pointer " onMouseEnter={()=>setShowMenu(!showMenu)}>
@@ -74,7 +81,9 @@ const Header = () => {
           <span className={`text-xs text-white px-2`} >▼</span> 
 
         </div>
-        
+         <select className="bg-black" onChange={(e)=>dispatch(changeLanguage(e.target.value))}>
+          {SUPPORTED_LANGUAGES.map((lang)=>(<option key={lang.identifier} value={lang.identifier}>{lang.name}</option>))}
+        </select>
        
 
        
@@ -92,6 +101,8 @@ const Header = () => {
         </ul> } 
 
 
+    
+    
     </div>
   )
 }
