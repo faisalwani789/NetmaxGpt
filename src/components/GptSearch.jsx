@@ -1,13 +1,13 @@
 import React from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { useDispatch } from 'react-redux'
-import { showGptSearchBar } from '../utils/configurationSlice'
+import { setGptSearchBar } from '../utils/configurationSlice'
 
 const GptSearch = () => {
   const dispatch=useDispatch()
    const handleSearchToggle=()=>{
     
-      dispatch(showGptSearchBar())
+      dispatch(setGptSearchBar())
    }
   
   return (

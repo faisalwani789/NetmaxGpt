@@ -5,7 +5,7 @@ const MainContainer=()=>{
     const movies=useSelector(store=>store.movies?.nowPlayingMovies)
     if(!movies)return //if movies is null till movies is fetched from the store
     // console.log("movies fetched"+JSON.stringify(movies[0]))
-    const mainMovie=movies[0]
+    const mainMovie=movies[6]
     
     return(
         <div className="" >  

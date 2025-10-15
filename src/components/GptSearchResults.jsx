@@ -3,19 +3,16 @@ import { useSearchParams } from 'react-router-dom'
 import GptSearchHigher from './GptSearchHigher'
 import Header from "./Header"
 import GptSearch from './GptSearch'
-import { useSelector } from 'react-redux'
+
+
 const GptSearchResults = () => {
   const GptBar=GptSearchHigher(GptSearch)
-  const config=useSelector(store=>store?.config)
   const[searchParams]=useSearchParams()
-  const res=searchParams.get("q")
-  console.log(res)
+  const query=searchParams.get("q")
   return (
     <div>
-     
-     
      <Header defaultBackground={"bg-black"}/>
-
+     <p className='pt-40'>welcome to search results{query}</p>
       </div>
   )
 }

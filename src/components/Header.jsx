@@ -19,7 +19,7 @@ const Header = ({defaultBackground="bg-transparent"}) => {
   // const navigate = useNavigate()
   useNowPlayingMovies()
   const dispatch=useDispatch()
-  const user = useSelector((store) => store.user)
+  const {user} = useSelector(store => store?.user)
   const langKey = useSelector((store) => store.config?.langKey)
   const[scrolled,setScrolled]=useState(false)
   const[showMenu,setShowMenu]=useState(false)
@@ -54,11 +54,11 @@ const Header = ({defaultBackground="bg-transparent"}) => {
         </div>
        {user && <ul className=" hidden lg:flex  gap-4 font-medium ">
           <li><Link to={"/"}>{lang[langKey].home}</Link></li>
-          <li><Link to={"/"}>Shows</Link></li>
-          <li><Link to={"/"}>Movies</Link></li>
-          <li><Link to={"/"}></Link>Games</li>
+          <li><Link to={"/"}>{lang[langKey].Shows}</Link></li>
+          <li><Link to={"/"}>{lang[langKey].Movies}</Link></li>
+          <li><Link to={"/"}>{lang[langKey].Games}</Link></li>
           
-          <li><Link to={"/"}></Link>Browse By Languages</li>
+          <li><Link to={"/"}>{lang[langKey]['Browse By Languages']}</Link></li>
 
 
         </ul>}

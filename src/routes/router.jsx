@@ -3,6 +3,7 @@ import Browse from "../components/Browse"
 import App from "../App"
 import Body from "../components/Body"
 import GptSearchResults from "../components/GptSearchResults"
+import PrivateRoute from "../components/PrivateRoute"
 
 
 export const appRouter = createBrowserRouter([
@@ -17,11 +18,11 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path:"/browse",
-                 element:<Browse/>
+                 element:<PrivateRoute><Browse/></PrivateRoute>
             },
             {
                 path:"/search",
-                element:<GptSearchResults/>
+                element:<PrivateRoute><GptSearchResults/></PrivateRoute>
             }
         ]
     },

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "./Header"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
@@ -7,8 +7,8 @@ import { USERICON } from "../utils/constants"
 import validation from "../utils/validate"
 import { createUserWithEmailAndPassword,  signInWithEmailAndPassword ,updateProfile} from "firebase/auth"
 import { auth } from "../utils/firebase"
-import { addUser } from "../utils/userSlice"
-import { useDispatch } from "react-redux"
+import { addUser} from "../utils/userSlice"
+import { useDispatch, useSelector } from "react-redux"
 
 const Login = () => {
     const dispatch=useDispatch()
@@ -20,6 +20,13 @@ const Login = () => {
     const [passwordValidationError, setPasswordValidationError] = useState("")
     const [isSignInForm, setIsSignInForm] = useState(true)
     const [errorMessage,setErrorMessage]=useState(null)
+    const user=useSelector((store)=>store?.user?.user)
+    useEffect(()=>{
+        if(user){
+            navigate("/browse")
+        }
+        
+    },[user,navigate])
     const emailHandler = (e) => {
         setEmail(e.target.value)
 
@@ -57,7 +64,8 @@ const Login = () => {
                         await user.reload(); //fetching the data added in the updateProfile
                         const{uid,email,displayName,photoURL}=auth.currentUser
                         dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
-                        // navigate("/browse")
+                        // setLoading(false)
+                        navigate("/browse")
                     }).catch((err)=>console.log(err.message))
                 })
                 .catch((error) => {
@@ -79,6 +87,10 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user
+                    const{uid,email,displayName,photoURL}=user
+                    dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
+                    // setLoading(false)
+                   navigate("/browse")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -95,6 +107,7 @@ const Login = () => {
     const signUpToggler = () => {
         setIsSignInForm(!isSignInForm)
     }
+    
 
     return (
         <div className="relative">

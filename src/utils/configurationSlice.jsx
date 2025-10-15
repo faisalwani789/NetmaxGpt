@@ -4,19 +4,20 @@ const appConfiguration=createSlice({
     name:"config",
     initialState:{
         showGptSearchBar:false,
-        searchValue:null,
+        query:"",
         hasNavigated:false,
         langKey:"en"
     },
     reducers:{
-        showGptSearchBar:(state)=>{
+        setGptSearchBar:(state)=>{
+            
             state.showGptSearchBar=!state.showGptSearchBar
         },
-        addSearchValue:(state,action)=>{
-            state.searchValue=action.payload
+        setQuery:(state,action)=>{
+            state.query=action.payload
         },
         clearSearchValue:(state)=>{
-            state.searchValue=""
+            state.query=""
         }
         ,
         setNavigated:(state)=>{
@@ -27,5 +28,5 @@ const appConfiguration=createSlice({
         }
     }
 })
-export const{showGptSearchBar,addSearchValue,setNavigated,changeLanguage,clearSearchValue}=appConfiguration.actions
+export const{setGptSearchBar,addSearchValue,setNavigated,changeLanguage,setQuery,clearSearchValue}=appConfiguration.actions
 export default appConfiguration.reducer
