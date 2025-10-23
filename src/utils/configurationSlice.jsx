@@ -8,6 +8,7 @@ const appConfiguration=createSlice({
         hasNavigated:false,
         langKey:"en",
         showPop:false,
+        hoveredId:null,
         cardPosition:{ top:0, left:0,width:0,height:0 }
     },
     reducers:{
@@ -28,8 +29,8 @@ const appConfiguration=createSlice({
         changeLanguage:(state,action)=>{
             state.langKey=action.payload
         }
-        ,setPop:(state,action)=>{
-            state.showPop=action.payload
+        ,setHoveredId:(state,action)=>{
+            state.hoveredId=action.payload
         },
         setPosition:(state,action)=>{
             state.cardPosition.top=action.payload.top
@@ -39,5 +40,5 @@ const appConfiguration=createSlice({
         }
     }
 })
-export const{setGptSearchBar,addSearchValue,setNavigated,changeLanguage,setQuery,clearSearchValue,setPop,setPosition}=appConfiguration.actions
+export const{setGptSearchBar,addSearchValue,setNavigated,changeLanguage,setQuery,clearSearchValue,setHoveredId,setPosition}=appConfiguration.actions
 export default appConfiguration.reducer
