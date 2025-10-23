@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 const VideoBackground = ({movieId}) => {
 useGetMovieVideos(movieId)
 const currentVideoTrailer=useSelector(store=>store.movies?.trailerVideo)
+// console.log(currentVideoTrailer)
 const youtube_key=currentVideoTrailer?.key
   return (
     <div className=' relative w-[100%] h-0 pb-[56.25%] overflow-hidden brightness-110  bg-gradient-to-t from-black'>

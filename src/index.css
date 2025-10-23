@@ -1,6 +1,7 @@
 
 @import "tailwindcss";
 @theme{
+  
   @keyframes extend{
     0%{
       width: 0px;
@@ -12,7 +13,22 @@
       margin-left:-2rem;
     }
   }
-  --animate-extend:extend 0.5s ease-in-out forwards;
+  
+  @keyframes grow{
+    from{
+      transform:scale(0.1);
+      opacity:0
+    }
+    to{
+      transform:scale(1);
+      opacity:1
+    }
+    
+  }
+   --animate-extend:extend 0.5s ease-in-out forwards;
+    --animate-grow:grow 0.5s ease-out forwards;
+ 
+  
 }
 /* customisation possible via tailwind.cofig is now available here in global css in tailwind 4.0 */
 @layer{

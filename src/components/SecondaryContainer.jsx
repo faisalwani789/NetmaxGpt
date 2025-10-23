@@ -6,7 +6,7 @@ const SecondaryContainer = () => {
     const langKey = useSelector((store) => store.config?.langKey)
     return (
         <div className=" bg-black border-2 relative z-12 shadow-lg ">
-            <div className="-mt-55  z-12">
+            <div className="-mt-55">
                 <Movielist title={lang[langKey]["Now Playing"]} movies={Movies?.nowPlayingMovies} />
                 <Movielist title={lang[langKey]["Trending"]} movies={Movies?.trendingMovies} />
                 <Movielist title={lang[langKey]["Top Rated"]} movies={Movies?.topRated} />

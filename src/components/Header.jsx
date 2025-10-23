@@ -53,7 +53,7 @@ const Header = ({defaultBackground="bg-transparent"}) => {
            <img src={LOGO} className="w-30" alt="logo" />
         </div>
        {user && <ul className=" hidden lg:flex  gap-4 font-medium ">
-          <li><Link to={"/"}>{lang[langKey].home}</Link></li>
+          <li><Link to={"/browse"}>{lang[langKey].home}</Link></li>
           <li><Link to={"/"}>{lang[langKey].Shows}</Link></li>
           <li><Link to={"/"}>{lang[langKey].Movies}</Link></li>
           <li><Link to={"/"}>{lang[langKey].Games}</Link></li>

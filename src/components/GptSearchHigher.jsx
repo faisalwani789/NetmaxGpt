@@ -4,18 +4,21 @@ import {  clearSearchValue, setNavigated, setQuery } from '../utils/configuratio
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
 import GptSearch from './GptSearch'
-import { FiArrowUp } from 'react-icons/fi'
+
 import {options} from "../utils/constants"
-import { addMovieList } from '../utils/gptSlice'
+
+import { addMoviesTo } from '../utils/MovieSearchSlice'
+import { changeAiMode } from '../utils/gptSlice'
 const GptSearchHigher = () => {
   const showGptSearch = useSelector(store => store.config?.showGptSearchBar)
-  // return function EnhancedShowGptSearch() {
+
   const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const inputRef = useRef(null)
   const config = useSelector(store => store.config)
   const changeSearchValue = (e) => {
+    dispatch(changeAiMode(false))
     dispatch(setQuery(e.target.value))
 
     if (window.location.pathname === '/search/') {
@@ -25,39 +28,20 @@ const GptSearchHigher = () => {
       dispatch(setNavigated())
       navigate(`/search/?q=${encodeURIComponent(e.target.value)}`)
     }
-
-
-
-  }
-  const searchMovies=(name)=>{
-    return fetch("https://api.themoviedb.org/3/search/movie?query="+name,options)
-    .then((res)=>res.json())
-    .then(res=>res)
     
-  }
-  const getAiResults=()=>{
-    const prompt=inputRef.current.value
-    fetch("http://localhost:5000/api/ai", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt }), // sending user input
-    }).then((res)=>res.json())
-    .then((res)=>{
-      const {aiResults}=res
-      const movieListPromises=aiResults.map(movie=>searchMovies(movie))
-      Promise.all(movieListPromises).then((res)=>{
-        console.log(res)
-         dispatch(addMovieList({movieList:res,movieNames:aiResults})) //passing object to reducer func containing both movienames from ai result and movieList(movie data from tmdb apis)
-      })
-      //promise.all takes n promise => gives one promise ,then() registers a callback , also receives the resolved value and returns another promise if available
-      //in above we understood promises , promise chaining and use of then()
-     
-    });
-   
+    if(e.target.value){
+        fetch(`https://api.themoviedb.org/3/search/movie?query=${e.target.value}` , options)
+        .then((res)=>res.json())
+        .then(res=>dispatch(addMoviesTo(res?.results)))
+    }
     
+    
+
+
   }
+
+  
+  
   // const handleOutsideClick = (event) => {
   //   if (inputRef.current && !inputRef.current.contains(event.target)) {
   //     dispatch(setGptSearchBar())
@@ -107,7 +91,7 @@ const GptSearchHigher = () => {
 
       <input className={`outline-none transition-all duration-1000 ease-in-out ${showGptSearch ? 'w-50':'w-0'}`} ref={inputRef} placeholder="welcome to Gpt Search" value={config?.query} onChange={changeSearchValue}  />
      
-      {showGptSearch && <> <FiArrowUp className='text-white text-2xl' onClick={getAiResults}/> <FiX className='relative text-white text-2xl  cursor-pointer' onClick={clearInput} /></>}
+      {showGptSearch && <>  <FiX className='relative text-white text-2xl  cursor-pointer' onClick={clearInput} /></>}
     </div>
 
   )

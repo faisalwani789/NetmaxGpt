@@ -4,16 +4,21 @@ const aiSlice=createSlice({
     name:'ai',
     initialState:{
         movieNames:null,
-        moveieList:null,
+        movieList:null,
+        aiMode:false,
     },
     reducers:{
         addMovieList:(state,action)=>{
             const{movieNames,movieList}=action.payload
-            state.moveieList=movieList
+            state.movieList=movieList
             state.movieNames=movieNames
+        }
+        ,
+        changeAiMode:(state,action)=>{
+            state.aiMode=action.payload
         }
     }
 })
 
-export const {addMovieList}=aiSlice.actions
+export const {addMovieList,changeAiMode}=aiSlice.actions
 export default aiSlice.reducer

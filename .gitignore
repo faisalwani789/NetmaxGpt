@@ -19,6 +19,7 @@ dist-ssr
 src/utils/constants.jsx
 notes
 /src/utils/firebase.js
+.env
 
 # Editor directories and files
 .vscode/*

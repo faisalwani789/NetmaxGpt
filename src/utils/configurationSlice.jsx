@@ -6,7 +6,9 @@ const appConfiguration=createSlice({
         showGptSearchBar:false,
         query:"",
         hasNavigated:false,
-        langKey:"en"
+        langKey:"en",
+        showPop:false,
+        cardPosition:{ top:0, left:0,width:0,height:0 }
     },
     reducers:{
         setGptSearchBar:(state)=>{
@@ -26,7 +28,16 @@ const appConfiguration=createSlice({
         changeLanguage:(state,action)=>{
             state.langKey=action.payload
         }
+        ,setPop:(state,action)=>{
+            state.showPop=action.payload
+        },
+        setPosition:(state,action)=>{
+            state.cardPosition.top=action.payload.top
+            state.cardPosition.left=action.payload.left
+            state.cardPosition.width=action.payload.width
+            state.cardPosition.height=action.payload.height
+        }
     }
 })
-export const{setGptSearchBar,addSearchValue,setNavigated,changeLanguage,setQuery,clearSearchValue}=appConfiguration.actions
+export const{setGptSearchBar,addSearchValue,setNavigated,changeLanguage,setQuery,clearSearchValue,setPop,setPosition}=appConfiguration.actions
 export default appConfiguration.reducer
