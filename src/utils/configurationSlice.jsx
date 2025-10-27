@@ -33,10 +33,11 @@ const appConfiguration=createSlice({
             state.hoveredId=action.payload
         },
         setPosition:(state,action)=>{
-            state.cardPosition.top=action.payload.top
-            state.cardPosition.left=action.payload.left
-            state.cardPosition.width=action.payload.width
-            state.cardPosition.height=action.payload.height
+            // console.log(action.payload)
+            state.cardPosition.top=action.payload?.top
+            state.cardPosition.left=action.payload?.left
+            state.cardPosition.width=action.payload?.width
+            state.cardPosition.height=action.payload?.height
         }
     }
 })
