@@ -47,7 +47,7 @@ const Header = ({defaultBackground="bg-transparent"}) => {
   
   return (
     
-    <div className={`py-2 flex justify-between items-center fixed top-0 w-full z-15 text-white ${scrolled?"bg-black":defaultBackground} `}   >
+    <div className={`py-2 flex justify-between items-center fixed top-0 w-full z-15 font-roboto text-white ${scrolled?"bg-black":defaultBackground} `}   >
       <div className="flex  gap-4 items-center  w-7/12 ">
         <div className="ml-12">
            <img src={LOGO} className="w-30" alt="logo" />

@@ -8,43 +8,43 @@ import { setHoveredId, setPosition } from '../utils/configurationSlice'
 import CardPopUp from './CardPopUp'
 import CardPopUp2 from './CardPopUp2'
 import useSimilarMovies from '../hooks/useSimilarMovies'
-const MovieCard = ({ img, id, popularity, title,description }) => {
+const MovieCard = ({ img, id, popularity, title,description,onEnter,onLeave }) => {
   
-  const dispatch = useDispatch()
-  const [timeoutId, setTimeoutId] = useState(null)
-  const [showPopUp, setShowPopUp] = useState(null)
-  const [isClick, setIsClick] = useState(false)
+  // const dispatch = useDispatch()
+  // const [timeoutId, setTimeoutId] = useState(null)
+  // const [showPopUp, setShowPopUp] = useState(null)
+  // const [isClick, setIsClick] = useState(false)
   // const[test,setTest]=useState(null)
   const { hoveredId } = useSelector(store => store?.config)
-  const handleMouseEnter = (e, id) => {
+  // const handleMouseEnter = (e, id) => {
 
-    if (timeoutId) clearTimeout(timeoutId)
-    const rect = e.currentTarget.getBoundingClientRect()
-    const newTimeout = setTimeout(() => {
+  //   if (timeoutId) clearTimeout(timeoutId)
+  //   const rect = e.currentTarget.getBoundingClientRect()
+  //   const newTimeout = setTimeout(() => {
 
-      dispatch(setPosition({
-        top: rect.top + rect.height / 2,//removed +window.ScorllY from here and added in style
-        left: rect.left + rect.width / 2,//removed +window.ScorllX from here and added in style
-        width: rect.width,
-        height: rect.height
+  //     dispatch(setPosition({
+  //       top: rect.top + rect.height / 2,//removed +window.ScorllY from here and added in style
+  //       left: rect.left + rect.width / 2,//removed +window.ScorllX from here and added in style
+  //       width: rect.width,
+  //       height: rect.height
 
-      }))
-      dispatch(setHoveredId(id))
-    }, 1000)
-    setTimeoutId(newTimeout)
-  };
+  //     }))
+  //     dispatch(setHoveredId(id))
+  //   }, 1000)
+  //   setTimeoutId(newTimeout)
+  // };
 
-  const handleMouseLeave = (e) => {
-    if (isClick) return
-    console.log("mouse leaved"+e.target)
-    console.log("mouse leaved"+e.currentTarget)
-    if (timeoutId) clearTimeout(timeoutId)
-    const newTimeout = setTimeout(() => {
-      dispatch(setHoveredId(null));
-      // dispatch(setPosition(null))
-    }, 200)
-    setTimeoutId(newTimeout)
-  };
+  // const handleMouseLeave = (e) => {
+  //   if (isClick) return
+  //   console.log("mouse leaved"+e.target)
+  //   console.log("mouse leaved"+e.currentTarget)
+  //   if (timeoutId) clearTimeout(timeoutId)
+  //   const newTimeout = setTimeout(() => {
+  //     dispatch(setHoveredId(null));
+  //     // dispatch(setPosition(null))
+  //   }, 200)
+  //   setTimeoutId(newTimeout)
+  // };
 
   const handleMoreInfo = (e, id) => {
     //we have to send the coordinates....for cardPopUp2...
@@ -67,23 +67,21 @@ const MovieCard = ({ img, id, popularity, title,description }) => {
   }
 
   return (
-    <div className='w-55  shrink-0 relative card cursor-pointer '>
+    <div className='w-55  shrink-0 relative card cursor-pointer font-roboto '>
       {
         hoveredId !== id &&
-        (<div className='w-55 h-auto  rounded-lg  ' onMouseEnter={(event) => handleMouseEnter(event, id)} onMouseLeave={handleMouseLeave} >
+        (<div className='w-55 h-auto  rounded-lg  ' onMouseEnter={(event) => onEnter(event, id)} onMouseLeave={onLeave} >
           <img className='w-full h-30 object-cover object-center rounded-lg' src={TMDB_BASE_URL + img} />
         </div>)}
 
-      {hoveredId === id && (<ModalPortal>
+      {/* {hoveredId === id && (<ModalPortal>
         <CardPopUp title={title} img={img} handleMouseLeave={handleMouseLeave} popularity={popularity} id={id} handleMoreInfo={handleMoreInfo} />
-      </ModalPortal>)}
+      </ModalPortal>)} */}
 
-      {showPopUp === id && (<ModalPortal>
+      {/* {showPopUp === id && (<ModalPortal>
         <CardPopUp2 setShowPopUp={setShowPopUp} showPopUp={showPopUp} img={img} description={description} title={title} id={id} />
-      </ModalPortal>)}
-      {/* {
-        showPopUp===id && (<ModalPortal><div className='bg-white w-52 h-50 fixed inset-0 animate-growPop z-100'></div></ModalPortal>)
-      } */}
+      </ModalPortal>)} */}
+    
     </div>
   )
 }
