@@ -65,9 +65,9 @@ const SearchResults = () => {
 
         {/* {movieList?.map((movies,i)=><Movielist movies={movies} title={movies[i].title} />)} */}
         {aiMode && movieNames?.map((movieName, i) => <Movielist key={movieName} movies={movieList[i]} title={movieName} />)}
-        <div className='flex flex-wrap gap-x-2 gap-y-5 pt-20 mt-15 px-14'>
+        <div  className='flex flex-wrap gap-x-2 gap-y-5 pt-20 mt-15 px-14'>
           {/* {movieSearch?.map((movieArray)=>movieArray.map((movie)=><MovieCard img={movie.poster_path}  />))} */}
-          {!aiMode && searched?.map((movie) => <MovieCard img={movie.poster_path} />)}
+          {!aiMode &&  <Movielist movies={searched}/>}
 
         </div>
 

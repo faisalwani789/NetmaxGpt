@@ -1,10 +1,11 @@
 import { options } from "../utils/constants";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addUpcomingMovies } from "../utils/movieSlice";
 const useUpcomingMoviesMovies=()=>{
  const dispatch=useDispatch()
-    const upComingMovies = () => {
+ const {upComingMovies}=useSelector(store=>store?.movies)
+    const getUpComingMovies = () => {
         fetch('https://api.themoviedb.org/3/movie/upcoming', options)
             .then(res => res.json())
             .then(res => {
@@ -14,7 +15,7 @@ const useUpcomingMoviesMovies=()=>{
             .catch(err => console.error(err));
     }
     useEffect(()=>{
-        upComingMovies()
+      !upComingMovies &&  getUpComingMovies()
     },[])
 }
 export default useUpcomingMoviesMovies

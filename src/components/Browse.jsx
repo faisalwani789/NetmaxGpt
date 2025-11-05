@@ -6,8 +6,6 @@ import SecondaryContainer from "./SecondaryContainer"
 import useTopRatedMovies from "../hooks/useTopRatedMovies"
 import useTrendingMovies from "../hooks/useTrendingMovies"
 import useUpcomingMoviesMovies from "../hooks/useUpcomingMovies"
-import { useEffect } from "react"
-import { options } from "../utils/constants"
 
 
 const Browse = () => {
@@ -25,6 +23,7 @@ const Browse = () => {
     usePopularMovies()
     useTopRatedMovies()
     useUpcomingMoviesMovies()
+    
 
     return (
 

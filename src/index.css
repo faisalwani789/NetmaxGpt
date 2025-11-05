@@ -45,6 +45,21 @@
       /* transform:scale(1) */
     }
   }
+  @keyframes shrinkPop{
+    0%{
+      top:var(--final-top);
+      left:20%;
+      width: var(--final-width);
+      height:var(--final-height);
+      /* opacity:1; */
+      transform:translate(50%,50%);
+    }
+    100%{
+      top:var(--initial-top);
+      left:var(--initial-left);
+      opacity: 0.2;
+    }
+  }
     @keyframes slideToLeft{
       from{
         opacity:0;
@@ -101,6 +116,7 @@
    --animate-extend:extend 0.5s ease-in-out forwards;
     --animate-grow:grow 0.35s ease-out forwards;
     --animate-growPop:growPop 1.5s ease-in forwards;
+    --animate-shrinkPop:shrinkPop 1.5s ease-in forwards;
     --animate-slideToLeft:slideToLeft 1s ease-in forwards;
     --animate-slideFromLeft:slideFromLeft 1s ease-in forwards;
     --animate-slideToRight:slideToRight 1s ease-in forwards;
@@ -111,7 +127,7 @@
 }
 /* customisation possible via tailwind.cofig is now available here in global css in tailwind 4.0 */
 @layer{
-}
+
 .hide-scrollbar {
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;     /* Internet Explorer and Edge */
@@ -119,4 +135,9 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;                /* Chrome, Safari, Opera */
+}
+.yt-responsive{
+  width: 100% !important;
+  height: 100% !important;
+}
 }

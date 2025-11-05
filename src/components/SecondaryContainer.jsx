@@ -7,11 +7,11 @@ const SecondaryContainer = () => {
     return (
         <div className=" bg-black border-2 relative z-12 shadow-lg ">
             <div className="-mt-55">
-                <Movielist title={lang[langKey]["Now Playing"]} movies={Movies?.nowPlayingMovies} />
-                <Movielist title={lang[langKey]["Trending"]} movies={Movies?.trendingMovies} />
-                <Movielist title={lang[langKey]["Top Rated"]} movies={Movies?.topRated} />
-                <Movielist title={lang[langKey]["Popular"]} movies={Movies?.popularMovies} />
-                <Movielist title={lang[langKey]["Upcoming"]} movies={Movies?.upcomingMovies} />
+                <Movielist title={lang[langKey]["Now Playing"]} movies={Movies?.nowPlayingMovies} scroll={'scroll'} />
+                <Movielist title={lang[langKey]["Trending"]} movies={Movies?.trendingMovies} scroll={'scroll'}/>
+                <Movielist title={lang[langKey]["Top Rated"]} movies={Movies?.topRated} scroll={'scroll'} />
+                <Movielist title={lang[langKey]["Popular"]} movies={Movies?.popularMovies} scroll={'scroll' } />
+                <Movielist title={lang[langKey]["Upcoming"]} movies={Movies?.upcomingMovies} scroll={'scroll'} />
   
             </div>
         </div>

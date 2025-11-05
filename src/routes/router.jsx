@@ -18,7 +18,8 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path:"/browse",
-                 element:<PrivateRoute><Browse/></PrivateRoute>
+                element:<PrivateRoute><Browse/></PrivateRoute>,
+                 
             },
             {
                 path:"/search",
