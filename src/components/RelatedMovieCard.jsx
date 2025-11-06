@@ -8,9 +8,9 @@ const RelatedMovieCard = (MovieCard) => {
         return null
     }
     return(
-        <div className='w-55'>
+        <div className='md:w-55'>
              <MovieCard img={props.img}/>
-             <h3 className='w-full mt-4' ><span className='mr-2 w-6 h-2  border-2 border-red-500'></span>{title}</h3>
+             <h3 className='w-40 mt-4' ><span className='mr-2 w-6 h-2  border-2 border-red-500'></span>{title}</h3>
         </div>
        
     )

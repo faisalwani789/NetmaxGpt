@@ -23,7 +23,7 @@ const dispatch=useDispatch()
             {/* <VideoBackground movieId={mainMovie.id} youtube_key={trailerVideo?.key} /> */}
 
             <YouTubePlayer videoId={trailerVideo?.key}/>
-             <div className='absolute inset-0 bg-gradient-to-t from-black/100 to-transparent'></div>
+             <div className='absolute z-5 inset-0 bg-gradient-to-t from-black/100 to-transparent'></div>
         </div>
 
     )

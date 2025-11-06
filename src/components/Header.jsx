@@ -49,8 +49,12 @@ const Header = ({defaultBackground="bg-transparent"}) => {
     
     <div className={`py-2 flex justify-between items-center fixed top-0 w-full z-15 font-roboto text-white ${scrolled?"bg-black":defaultBackground} `}   >
       <div className="flex  gap-4 items-center  w-7/12 ">
-        <div className="ml-12">
-           <img src={LOGO} className="w-30" alt="logo" />
+        <div className="md:ml-12 ">
+          <Link to={"/"}>
+          <img src={LOGO} className="w-30" alt="logo" />
+          </Link>
+           
+          
         </div>
        {user && <ul className=" hidden lg:flex  gap-4 font-medium ">
           <li><Link to={"/browse"}>{lang[langKey].home}</Link></li>
@@ -67,21 +71,21 @@ const Header = ({defaultBackground="bg-transparent"}) => {
         
        
        
-      {user && <div className="flex justify-end gap-8 items-center w-170 max-w-200  mr-12">
+      {user && <div className="flex justify-end gap-8 items-center w-170 max-w-200  md:mr-12">
         
         
         
         <GptSearchHigher />
-        <Link to={"/"}>
+        <Link className="hidden md:block" to={"/"}>
         {lang[langKey].Children}
         </Link>
-        <FiBell className="text-2xl"/>
+        <FiBell className="text-2xl hidden md:block"/>
         <div className="cursor-pointer " onMouseEnter={()=>setShowMenu(!showMenu)}>
           <img className="inline-block w-8 rounded-md " src={user.photoURL || USERICON }  alt="userLogo" />
           <span className={`text-xs text-white px-2`} >▼</span> 
 
         </div>
-         <select className="bg-black" onChange={(e)=>dispatch(changeLanguage(e.target.value))}>
+         <select className="bg-black hidden md:block" onChange={(e)=>dispatch(changeLanguage(e.target.value))}>
           {SUPPORTED_LANGUAGES.map((lang)=>(<option key={lang.identifier} value={lang.identifier}>{lang.name}</option>))}
         </select>
        
@@ -91,7 +95,7 @@ const Header = ({defaultBackground="bg-transparent"}) => {
       }
 
 
- {showMenu && <ul onMouseLeave={()=>setShowMenu(!showMenu)}className=" absolute right-20 top-12 bg-black text-white px-4 py-4 rounded-lg flex flex-col gap-4"  >
+ {showMenu && <ul onMouseLeave={()=>setShowMenu(!showMenu)}className=" absolute z-20  md:right-20 right-5 top-12 bg-black text-white px-4 py-4 rounded-lg flex flex-col gap-4"  >
           <li className="flex gap-4 "><img  src={KIDSICON} alt="kids"/>Kids</li>
           <li className="flex gap-2"><FiEdit className="text-2xl" />Manage Profiles</li>
           <li className="flex gap-2"><RiUser3Line/>Transfer Profile</li>

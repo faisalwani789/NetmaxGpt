@@ -110,7 +110,7 @@ const YouTubePlayer = ({videoId}) => {
                     )}
                     
                 
-                 <button className='border-2 p-2 opacity-50  rounded-4xl border-white text-2xl text-white absolute z-110 right-[5%] bottom-[20%] hover:opacity-90' onClick={handleMute}>{mute?<FaVolumeMute/>:<FaVolumeUp/>}</button>
+                 <button className='border-2 p-2 opacity-50  rounded-4xl border-white text-xl md:text-2xl text-white absolute z-60 right-[5%] bottom-[20%] hover:opacity-90' onClick={handleMute}>{mute?<FaVolumeMute/>:<FaVolumeUp/>}</button>
             </div>
     )
 }

@@ -56,7 +56,7 @@ const SearchResults = () => {
     <div className='bg-black'>
       <Header defaultBackground={"bg-black"} />
       <div className='min-h-[100vh] mt-15 py-5  '>
-        <div className='bg-white w-200  flex px-4 py-2 mx-auto' >
+        <div className='bg-white md:w-200 w-full  flex px-4 py-2 mx-2' >
           <input className='outline-0 w-full  ' type='text' ref={inputRef} placeholder='wanna try out movie suggestions/searches using Ai Capabliites'></input>
           <FiArrowUp className='text-black text-2xl' onClick={getAiResults} />
         </div>
@@ -65,7 +65,7 @@ const SearchResults = () => {
 
         {/* {movieList?.map((movies,i)=><Movielist movies={movies} title={movies[i].title} />)} */}
         {aiMode && movieNames?.map((movieName, i) => <Movielist key={movieName} movies={movieList[i]} title={movieName} />)}
-        <div  className='flex flex-wrap gap-x-2 gap-y-5 pt-20 mt-15 px-14'>
+        <div  className='flex flex-wrap gap-x-2 gap-y-5 md:pt-20 md:mt-15 md:px-14 px-2'>
           {/* {movieSearch?.map((movieArray)=>movieArray.map((movie)=><MovieCard img={movie.poster_path}  />))} */}
           {!aiMode &&  <Movielist movies={searched}/>}
 

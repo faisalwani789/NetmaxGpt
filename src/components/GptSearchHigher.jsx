@@ -89,7 +89,7 @@ const GptSearchHigher = () => {
 
       <GptSearch />
 
-      <input className={`outline-none transition-all duration-1000 ease-in-out ${showGptSearch ? 'w-50':'w-0'}`} ref={inputRef} placeholder="welcome to Gpt Search" value={config?.query} onChange={changeSearchValue}  />
+      <input className={`outline-none transition-all duration-1000 ease-in-out ${showGptSearch ? 'md:w-50 w-30':'w-0'}`} ref={inputRef} placeholder="welcome to Gpt Search" value={config?.query} onChange={changeSearchValue}  />
      
       {showGptSearch && <>  <FiX className='relative text-white text-2xl  cursor-pointer' onClick={clearInput} /></>}
     </div>
