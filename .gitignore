@@ -16,10 +16,10 @@ eslint.config.js
 dist
 dist-ssr
 *.local
-src/utils/constants.jsx
+# src/utils/constants.jsx
 notes
 oldComps
-/src/utils/firebase.js
+# /src/utils/firebase.js
 .env
 
 # Editor directories and files

@@ -30,7 +30,7 @@ const CardPopUp2 = ({ showPopUp, setShowPopUp, title, img, description, id, isMo
 
 
   // , similar movies will be added we can also load/dispatch movies to store in hover Pop also and then use here use Selector only
-  const { similarMovies, movieDetails, movieCast, movieCardTrailer } = useSelector(store => store.movies)
+  const { similarMovies, movieDetails, movieCast, movieCardTrailer } = useSelector(store => store?.movies)
   const EnhancedCard = RelatedMovieCard(MovieCard)
   const director = movieCast?.crew?.find(crew => crew.job == 'Director')
   // const centerX = window.innerWidth / 2

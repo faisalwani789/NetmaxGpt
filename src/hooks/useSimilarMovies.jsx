@@ -6,16 +6,19 @@ import { useSelector } from 'react-redux'
 const useSimilarMovies = (id) => {
     const dispatch = useDispatch()
      const {similarMovies}=useSelector(store=>store.movies)
-    useEffect(() => {
-        const fetchSimilarMovies = () => {           
+     const fetchSimilarMovies = () => {           
             fetch(`https://api.themoviedb.org/3/movie/${id}/similar`, options)
                 .then((res) => res.json())
-                .then((res) => dispatch(addSimilarMovies(res.results)))
+                .then((res) =>{ 
+                    console.log(res)
+                    dispatch(addSimilarMovies(res.results))})
                 .catch((err) => {
                     console.log(err)
                 })
         }
-       !similarMovies && fetchSimilarMovies()
+    useEffect(() => {
+
+        fetchSimilarMovies()
     }, [id,dispatch])
 }
 
