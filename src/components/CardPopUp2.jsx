@@ -6,7 +6,7 @@ import { BsPlayBtn } from 'react-icons/bs'
 import MovieCard from './MovieCard'
 import LikeButtons from './LikeButtons';
 import RelatedMovieCard from './RelatedMovieCard'
-import YouTubePlayer from './YoutubePlayer'
+import YouTubePlayer from './YouTubePlayer'
 import { setPosition } from '../utils/configurationSlice'
 import { useDispatch } from 'react-redux'
 import useGetCast from '../hooks/useGetCast'

@@ -13,7 +13,7 @@ import { addMovieCardTrailer } from '../utils/movieSlice'
 import { options } from '../utils/constants'
 import VideoBackground from './VideoBackground'
 import VideoCard from './VideoCard'
-import YouTubePlayer from './YoutubePlayer'
+import YouTubePlayer from './YouTubePlayer'
 
 const CardPopUp = ({ id, popularity, title, img, handleMouseLeave, handleMoreInfo }) => {
   useGetMovieVideos(id, addMovieCardTrailer)
