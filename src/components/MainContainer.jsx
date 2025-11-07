@@ -3,7 +3,7 @@ import VideoBackground from "./VideoBackground"
 import VideoTitle from "./VideoTitle"
 import useGetMovieVideos from "../hooks/useGetMovieVideos"
 import { addTrailerVideo } from "../utils/movieSlice"
-import YouTubePlayer from "./YoutubePlayer"
+import YouTubePlayer from "./YouTubePlayer"
 import { setMainPlayingId } from "../utils/configurationSlice"
 import { useDispatch } from "react-redux"
 const MainContainer = () => {
