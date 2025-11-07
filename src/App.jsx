@@ -13,7 +13,7 @@ function App() {
     const navigate=useNavigate()
    useEffect(()=>{
         const unsubscribe=onAuthStateChanged(auth,(user)=>{
-            console.log("on auth state change detected")
+            // console.log("on auth state change detected")
             if(user){
                 //signup/signin case
                 const{uid,email,displayName,photoURL}=user

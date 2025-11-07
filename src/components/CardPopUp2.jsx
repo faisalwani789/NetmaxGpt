@@ -89,8 +89,8 @@ const CardPopUp2 = ({ showPopUp, setShowPopUp, title, img, description, id, isMo
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
              {/* title/overlay*/}
-          <div className='ml-10 absolute bottom-20 sm:bottom-30 md:bottom-90'>
-            <img className='w-20  md:w-30 md:-ml-2' src={LOGO} alt="" />
+          <div className='ml-10 absolute bottom-20 sm:bottom-20 md:bottom-0'>
+            <img className='w-20  md:w-30 -ml-2' src={LOGO} alt="" />
             <h2 className="font-bold mt-1 text-xl md:text-4xl text-red-600">{title}</h2>
             <div className='flex gap-4 mt-4'>
               <button className='px-8 py-3 flex gap-2 items-center bg-white rounded-md text-black cursor-pointer'>< BsPlayBtn />Play</button>

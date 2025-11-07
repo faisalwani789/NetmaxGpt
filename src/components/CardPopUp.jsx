@@ -33,11 +33,11 @@ const CardPopUp = ({ id, popularity, title, img, handleMouseLeave, handleMoreInf
       fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
         .then((res) => res.json())
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           const filterData = res.results.filter((x) => x.type == "Trailer")
           const trailer = filterData.length ? filterData[0] : res[0]
           setVideoSrc(trailer)
-          console.log(videoSrc)
+          // console.log(videoSrc)
         })
         .catch(err => console.error(err));
     }

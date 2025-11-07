@@ -1,11 +1,6 @@
-import React, { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import GptSearchHigher from './GptSearchHigher'
 import Header from "./Header"
-import GptSearch from './GptSearch'
 import { useSelector } from 'react-redux'
 import Movielist from './Movielist'
-import MovieCard from './MovieCard'
 import { FiArrowUp } from 'react-icons/fi'
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
@@ -31,7 +26,7 @@ const SearchResults = () => {
   const getAiResults = () => {
     dispatch(changeAiMode(true))
     const prompt = inputRef.current.value
-    fetch("http://localhost:5000/api/ai", {
+    fetch(import.meta.env.VITE_AI_URI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +37,7 @@ const SearchResults = () => {
         const { aiResults } = res
         const movieListPromises = aiResults.map(movie => searchMovies(movie))
         Promise.all(movieListPromises).then((res) => {
-          console.log(res)
+          // console.log(res)
           dispatch(addMovieList({ movieList: res, movieNames: aiResults })) //passing object to reducer func containing both movienames from ai result and movieList(movie data from tmdb apis)
         })
         //promise.all takes n promise => gives one promise ,then() registers a callback , also receives the resolved value and returns another promise if available
@@ -55,8 +50,8 @@ const SearchResults = () => {
   return (
     <div className='bg-black'>
       <Header defaultBackground={"bg-black"} />
-      <div className='min-h-[100vh] mt-15 py-5  '>
-        <div className='bg-white md:w-200 w-full  flex px-4 py-2 mx-2' >
+      <div className='min-h-[100dvh]  pt-25  '>
+        <div className='bg-white md:w-200 w-full  flex px-4 py-2  md:mx-auto' >
           <input className='outline-0 w-full  ' type='text' ref={inputRef} placeholder='wanna try out movie suggestions/searches using Ai Capabliites'></input>
           <FiArrowUp className='text-black text-2xl' onClick={getAiResults} />
         </div>

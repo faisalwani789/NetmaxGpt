@@ -53,7 +53,6 @@ const Movielist = ({ title, movies, scroll }) => {
     }
   }
   const handleClick = (id) => {
-    console.log('clicked')
     if (isMobile) {
       dispatch(setPosition({
       // we don't need to reset positon of popup 2 in case of mobile as it was never set because popup2 is disabled but incase we first used web view then switch to mobile view we need this

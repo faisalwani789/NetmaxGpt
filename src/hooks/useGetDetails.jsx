@@ -11,7 +11,7 @@ const useGetDetails = (id) => {
             .then((res) => res.json())
             .then((res) =>{
                 dispatch(addMovieDetails(res))
-                console.log(res)
+                // console.log(res)
             }) 
             .catch((err) => {
                 console.log(err)

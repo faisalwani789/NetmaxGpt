@@ -57,7 +57,7 @@ const Login = () => {
             try {
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    console.log(userCredential)
+                    // console.log(userCredential)
                     const user = userCredential.user
                     updateProfile(user,{displayName:name,photoURL:USERICON})
                     .then(async()=>{
@@ -95,7 +95,7 @@ const Login = () => {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.log(errorMessage)
+                    
                     setErrorMessage(errorMessage)
                     // ..
                 });

@@ -11,8 +11,8 @@ const useGetCast = (id) => {
             .then((res) => res.json())
             .then((res) =>{
                 dispatch(addMovieCast(res))
-                console.log(res)
-                console.log(res.crew?.find(x=>x.job=='Director'))
+                // console.log(res)
+                // console.log(res.crew?.find(x=>x.job=='Director'))
             }) 
             .catch((err) => {
                 console.log(err)

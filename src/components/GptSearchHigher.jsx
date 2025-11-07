@@ -67,7 +67,6 @@ const GptSearchHigher = () => {
   useEffect(()=>{
      const searchQuery=searchParams.get("q")|| ""
     if(!config.query && searchQuery){
-       console.log(searchQuery)
      dispatch(setQuery(searchQuery)) //obtaining query from the url
     }
    

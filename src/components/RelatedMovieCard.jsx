@@ -2,7 +2,6 @@ import React from 'react'
 
 const RelatedMovieCard = (MovieCard) => {
  return function EhnancedCard(props){
-    console.log(props)
     const{title}=props
     if(!props.img){
         return null
