@@ -8,7 +8,7 @@ const MovieCard = ({ img, id,onEnter=()=>console.log('no handler attached'),onLe
     return null
   }
   return (
-    <div className='md:w-55 md:h-auto h-50 w-40  shrink-0 relative card cursor-pointer font-roboto '>
+    <div className='md:w-55 md:h-auto h-40 w-30  shrink-0 relative card cursor-pointer font-roboto '>
       {
         hoveredId !== id &&
         (<div className='md:w-55 md:h-auto w-full h-full  rounded-lg  ' onMouseEnter={(event) => onEnter?.(event, id) } onMouseLeave={onLeave } onClick={()=>onClick(id)} >
