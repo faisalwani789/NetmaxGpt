@@ -14,7 +14,7 @@ const dispatch=useDispatch()
     // useGetMovieVideos(mainMovie.id, addTrailerVideo)
     if (!nowPlayingMovies) return //if movies is null till movies is fetched from the store
     // console.log("movies fetched"+JSON.stringify(movies[0]))
-    const mainMovie = nowPlayingMovies[1]
+    const mainMovie = nowPlayingMovies[0]
     dispatch(setMainPlayingId(trailerVideo?.key))
     // const youtube_key=
     return (
