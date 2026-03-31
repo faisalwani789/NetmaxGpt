@@ -9,12 +9,12 @@ import { useDispatch } from "react-redux"
 const MainContainer = () => {
 const dispatch=useDispatch()
     const { nowPlayingMovies} = useSelector(store => store.movies)
-    useGetMovieVideos(nowPlayingMovies?.[1]?.id,addTrailerVideo)
+    useGetMovieVideos(nowPlayingMovies?.[7]?.id,addTrailerVideo)
     const{trailerVideo}=useSelector(store=>store?.movies)
     // useGetMovieVideos(mainMovie.id, addTrailerVideo)
     if (!nowPlayingMovies) return //if movies is null till movies is fetched from the store
     // console.log("movies fetched"+JSON.stringify(movies[0]))
-    const mainMovie = nowPlayingMovies[5]
+    const mainMovie = nowPlayingMovies[7]
     dispatch(setMainPlayingId(trailerVideo?.key))
     // const youtube_key=
     return (
